@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Online Store</title>
+  <style>
+    /* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  background: #f9f9f9;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+.header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #FFD700;
+}
+
+.toggle-button {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  background: #f4f4f4;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  background: #333;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #FFD700;
+}
+
+/* Products Section */
+.products {
+  background: lightgoldenrodyellow;
+  padding: 2rem 1rem;
+  
+}
+
+.products h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  background: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  margin: 1rem 0;
+  height: 10px;
+}
+
+.add-to-cart {
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #FFD700;
+}
+
+/* About Section */
+.about {
+  background: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* Contact Section */
+.contact {
+  background: #f4f4f4;
+  padding: 2rem 1rem;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact form button {
+  align-self: flex-start;
+}
+
+/* Footer */
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #1e1e1e;
+  color: #f9f9f9;
+}
+
+body.dark-mode .header {
+  background: #555;
+}
+
+body.dark-mode .cta-button,
+body.dark-mode .add-to-cart {
+  background: #FFD700;
+  color: #333;
+}
+
+body.dark-mode .cta-button:hover,
+body.dark-mode .add-to-cart:hover {
+  background: #333;
+  color: #FFD700;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+  </style>
+
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">ShopEase</h1>
+      <button id="theme-toggle" class="toggle-button"></button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to ShopEase</h2>
+      <p>Your ultimate destination for shopping online!</p><br><br>
+      <a href="#products" class="cta-button">Shop Now</a>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://www.carlington.in/cdn/shop/files/Carlington_elite_analog_ladies_watch_CT_2007_roseblack.jpg?v=1696689556&width=2400" alt="Product 1">
+          
+          <h3>Product 1</h3>
+          <p>1000.00</p>
+          <button class="add-to-cart">Add to Cart</button>
+          
+<div class="rating">
+  <input value="5" name="rate" id="star5" type="radio">
+  <label title="text" for="star5"></label>
+  <input value="4" name="rate" id="star4" type="radio">
+  <label title="text" for="star4"></label>
+  <input value="3" name="rate" id="star3" type="radio" checked="">
+  <label title="text" for="star3"></label>
+  <input value="2" name="rate" id="star2" type="radio">
+  <label title="text" for="star2"></label>
+  <input value="1" name="rate" id="star1" type="radio">
+  <label title="text" for="star1"></label>
+</div>
+        </div>
+        <div class="product-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIBJOt691tnXVObPwwi_9Z9rtlCKFImQmFjQ&s" alt="Product 2">
+          <h3>Product 2</h3>
+          <p>20000.00</p>
+          <button class="add-to-cart">Add to Cart</button>
+           
+<div class="rating">
+  <input value="5" name="rate" id="star5" type="radio">
+  <label title="text" for="star5"></label>
+  <input value="4" name="rate" id="star4" type="radio">
+  <label title="text" for="star4"></label>
+  <input value="3" name="rate" id="star3" type="radio" checked="">
+  <label title="text" for="star3"></label>
+  <input value="2" name="rate" id="star2" type="radio">
+  <label title="text" for="star2"></label>
+  <input value="1" name="rate" id="star1" type="radio">
+  <label title="text" for="star1"></label>
+</div>
+        </div>
+        <div class="product-card">
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQavMdkw2IsJbQzdzsLASO7McjtZdBOD9VQe_N5sv1mmorZJeqImJ1emitn-37HzUjTSEF05u7jK0Q39RAR_FsMy0j_dOLdjVWL7XaTWNPUiEDnSsYKGW7QfCw" alt="Product 3">
+          <h3>Product 3</h3>
+          <p>300.00</p>
+          <button class="add-to-cart">Add to Cart</button>
+          
+<div class="rating">
+  <input value="5" name="rate" id="star5" type="radio">
+  <label title="text" for="star5"></label>
+  <input value="4" name="rate" id="star4" type="radio">
+  <label title="text" for="star4"></label>
+  <input value="3" name="rate" id="star3" type="radio" checked="">
+  <label title="text" for="star3"></label>
+  <input value="2" name="rate" id="star2" type="radio">
+  <label title="text" for="star2"></label>
+  <input value="1" name="rate" id="star1" type="radio">
+  <label title="text" for="star1"></label>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>ShopEase is a trusted online store offering the best deals on a variety of products. We focus on customer satisfaction and convenience.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 ShopEase. All rights reserved.</p>
+    </div>
+  </footer>
+
+ 
+</body>
+</html>
